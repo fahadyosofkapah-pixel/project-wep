@@ -18,9 +18,12 @@
 
   body {
     height: 100%;
-    width: 100%;
-    background-color: red;
-  }
+   width: 100%;
+
+  
+    background-image: linear-gradient(to bottom right, rgba(79,51,176,1),rgba(210,53,165));
+}   
+  
 
   nav {
     padding: 10px 30px;
@@ -31,9 +34,9 @@
     position: fixed;
     width: 100%;
     height: 70px;
-      z-index: 1000;
-}
-  
+    z-index: 1000;
+  }
+
 
   .logo {
     color: #fff;
@@ -214,16 +217,13 @@
     text-decoration: none;
     color: #fff;
   }
-
-  /* body{
-    background-image: linear-gradient(to bottom right, rgba(79,51,176,1),rgba(210,53,165));
-} */
   .containers {
     height: 100vh;
     width: 100%;
     display: grid;
     place-items: center;
-      scroll-margin-top: 80px;
+    scroll-margin-top: 80px;
+
   }
 
   .calculator {
@@ -233,7 +233,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 30px #000;
-    /* scroll-margin-top: 80px; */
+    scroll-margin-bottom: 80px;
   }
 
   .theme-toggler {
@@ -276,6 +276,7 @@
     font-size: 30px;
     margin-bottom: 20px;
     overflow-x: scroll;
+
   }
 
   #display::-webkit-scrollbar {
@@ -357,6 +358,17 @@
   .calculator.dark button.btn-equal {
     background-color: #223323;
     color: #ffffff;
+
+    section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 
@@ -472,115 +484,65 @@
       })
       task.value = ""
     });
-
-
-
     let display = document.getElementById("display");
-
     let numbers = document.querySelectorAll(".btn-number");
-
     let operators = document.querySelectorAll(".btn-operator");
-
     let equal = document.querySelector(".btn-equal");
-
     let clear = document.getElementById("clear");
-
     let backspace = document.getElementById("backspace");
-
     let themeToggler = document.querySelector(".theme-toggler");
-
     let calculator = document.querySelector(".calculator");
-
-
-
     numbers.forEach(function (button) {
-
       button.addEventListener("click", function () {
-
         display.innerText += button.innerText;
-
       });
-
     });
-
-
-    // =========================
-    // OPERATORS
-    // =========================
-
     operators.forEach(function (button) {
-
       button.addEventListener("click", function () {
-
         let value = button.innerText;
-
-        // Ha gelin C iyo backspace operator ahaan
         if (value !== "C" && value !== "⌫") {
-
           if (value === "×") {
             value = "*";
           }
-
           if (value === "÷") {
             value = "/";
           }
-
           display.innerText += value;
         }
-
       });
 
     });
-
-
-
-
     equal.addEventListener("click", function () {
-
       try {
-
         display.innerText = eval(display.innerText);
-
       } catch {
-
         display.innerText = "Error";
-
       }
-
     });
-
-
-
-
     clear.addEventListener("click", function () {
-
       display.innerText = "";
-
     });
-
     backspace.addEventListener("click", function () {
-
       display.innerText = display.innerText.slice(0, -1);
-
     });
-
-
-
     themeToggler.addEventListener("click", function () {
-
       calculator.classList.toggle("dark");
-
       themeToggler.classList.toggle("active");
-
     });
-
-
-
-
-
-
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
   </script>
-
 </body>
 
 </html>

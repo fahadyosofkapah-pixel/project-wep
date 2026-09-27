@@ -1,20 +1,28 @@
-  const task = document.getElementById("task");
-    const addTaskBtn = document.getElementById("add-task-btn");
-    const taskContainer = document.getElementById("tasks-container");
-    addTaskBtn.addEventListener("click",() => {
-        const todoWrapper = document.createElement("div");
-        const deleteButton = document.createElement("button");
-        const taskText = document.createElement("p");
-        todoWrapper.classList.add("todo-container");
-        deleteButton.classList.add("delete-button");
-        deleteButton.textContent = "DELETE";
-        taskText.classList.add("task-text");
-        taskText.textContent = task.value;
-        todoWrapper.append(taskText);
-        todoWrapper.append(deleteButton);
-        taskContainer.append(todoWrapper);
-         deleteButton.addEventListener("click",() =>{
-            todoWrapper.remove();
-         })
-        task.value = ""
-     });
+ section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+sections.forEach((section) => {
+    observer.observe(section);
+});
