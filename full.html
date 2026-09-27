@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-<!-- <link rel="stylesheet" href="./assets/script.js"> -->
-  <title>project</title>
+    <title>Document</title>
 </head>
 <style> 
 * {
@@ -174,6 +172,37 @@ font-weight: bold;
 letter-spacing: 0.2ch;
 cursor: pointer;
 }
+/* shiine */
+   *{
+    margin: 0;
+    padding: 0;
+ }
+ .section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 12px arial, Helvetice, sans-serif;
+    background-color: aqua;
+ }
+ .clock{
+    border: 1px solid #606060;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+     background-color: #22222222;
+}
+
+#date{
+    font-size: 20px !important;
+    text-align: center;
+}
+.clock ul{
+    list-style: none;
+    display: flex;
+    font-size: 90px;
+    gap: 15px;
+}  
 </style>
 <body>
       <nav>
@@ -211,6 +240,21 @@ cursor: pointer;
         <div id="tasks-container"></div>
     </div>
  </div>
+
+ <!-- shhine -->
+
+    <div class="section">
+        <div class="clock">
+            <div id="date"> wed 23 september 2026</div>
+            <ul>
+                <li id="hours">05</li>
+                <li id="point">:</li>
+                <li id="min">25</li>
+                <li class="point">:</li>
+                <li id="sec">50</li>
+            </ul>
+        </div>
+    </div>
    <script>
     let menuList = document.getElementById("menuList");
  
@@ -245,6 +289,37 @@ cursor: pointer;
           })
        task.value = ""
      });
+
+    //  shiine
+  function clock() {
+            var monthNames = ["January", "February", "March", "April",
+                "May", "June", "July", "August",
+                "September", "October", "November", "December"];
+            var dayNames = ["sunday", "monday", "Tuesday", "wednesday",
+                "Thursday", "friday", "saturday",]
+
+            var today = new Date();
+
+            document.getElementById('date').innerHTML =
+                dayNames[today.getDay()] + ' ' +
+                today.getDate() + ' ' +
+                monthNames[today.getMonth()] + ' ' +
+                today.getFullYear();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+
+            var day = h < 11 ? 'AM' : 'PM';
+
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('min').innerHTML = m;
+            document.getElementById('sec').innerHTML = s;
+            clock();
+        } var inter = setInterval(clock, 400);
   </script> 
     
 </body>
