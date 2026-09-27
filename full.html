@@ -19,7 +19,7 @@
   body {
     height: 100%;
     width: 100%;
-    background-color: wheat;
+    background-color: red;
   }
 
   nav {
@@ -31,7 +31,9 @@
     position: fixed;
     width: 100%;
     height: 70px;
-  }
+      z-index: 1000;
+}
+  
 
   .logo {
     color: #fff;
@@ -59,7 +61,7 @@
   nav ul li a:hover {
     color: #162530;
     background: rgba(188, 212, 229, 0.8);
-    border-radius: 15px rgba(5, 134, 226, 0.8);
+    border-radius: 15px rgba(20, 30, 38, 0.8);
   }
 
   .menu-icon {
@@ -108,7 +110,7 @@
   .container {
     width: 100%;
     min-height: 100vh;
-    background-color: rgba(239, 7, 7, 0.863);
+    /* background-color: #222223; */
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -127,7 +129,7 @@
     box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.2);
   }
 
-  h1 {
+  * h1 {
     color: white;
     font-size: 40px;
     font-weight: bold;
@@ -193,37 +195,378 @@
     letter-spacing: 0.2ch;
     cursor: pointer;
   }
- 
-  
+
+  /* calculator */
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: 0;
+    transition: all 0.5s;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  /* body{
+    background-image: linear-gradient(to bottom right, rgba(79,51,176,1),rgba(210,53,165));
+} */
+  .containers {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+      scroll-margin-top: 80px;
+  }
+
+  .calculator {
+    position: relative;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #000;
+    /* scroll-margin-top: 80px; */
+  }
+
+  .theme-toggler {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .theme-toggler.active {
+    color: #000;
+  }
+
+  .theme-toggler.active::before {
+    background-color: #fff;
+  }
+
+  .theme-toggler::before {
+    content: '';
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #000;
+    z-index: 1;
+  }
+
+  #display {
+    margin: 0 10px;
+    height: 150px;
+    width: auto;
+    max-width: 270px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 30px;
+    margin-bottom: 20px;
+    overflow-x: scroll;
+  }
+
+  #display::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+  }
+
+  button {
+    height: 60px;
+    width: 60px;
+    border: 0;
+    border-radius: 30px;
+    margin: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+
+  button:hover {
+    transform: scale(1.15);
+  }
+
+  button.btn-equal {
+    height: 130px;
+    color: white;
+  }
+
+  .calculator {
+    background-color: #fff;
+  }
+
+  .calculator #display {
+    color: #000;
+  }
+
+  .calculator button#clear {
+    background-color: #ffd5d8;
+    color: red;
+  }
+
+  .calculator button.btn-number {
+    background-color: #c3eaff;
+    color: #000;
+  }
+
+  .calculator button.btn-operator {
+    background-color: #ffd0fd;
+    color: #f967f3;
+  }
+
+  .calculator button.btn-equal {
+    background-color: #adf9e7;
+    color: #000;
+  }
+
+  .calculator.dark {
+    background-color: #071115;
+  }
+
+  .calculator.dark #display {
+    color: #f8fafd;
+  }
+
+  .calculator.dark button#clear {
+    background-color: #2d191e;
+    color: #bd3740;
+  }
+
+  .calculator.dark button.btn-number {
+    background-color: #1b2f38;
+    color: #f8fafb;
+  }
+
+  .calculator.dark button.btn-operator {
+    background-color: #2e1f39;
+    color: #aa00a4;
+  }
+
+  .calculator.dark button.btn-equal {
+    background-color: #223323;
+    color: #ffffff;
+  }
+/* analog */
+
+*{
+    font-family: sans-serif;
+}
+.clock{
+    width: 500px;
+    height: 500px;
+    border: 20px solid rgb(18, 151, 228);
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+.point{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(25, 80, 23);
+    position: absolute;
+    top: 240px;
+    left: 240px;
+    border-radius: 50px;
+}
+.hour{
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(7, 32, 32);
+    position: absolute;
+}
+.hours-1{
+    top:40px ;
+    right: 130px;
+
+}
+
+.hours-2{
+    top:135px ;
+    right: 45px;
+
+}
+.hours-3{
+    top:235px ;
+    right: 10px;
+
+}
+.hours-4{
+    top:345px ;
+    right: 45px;
+
+}
+.hours-5{
+    top:430px ;
+    right: 130px;
+
+}
+.hours-6{
+    bottom:10px ;
+    left: 240px;
+
+}
+.hours-7{
+    top:430px ;
+    left: 130px;
+
+}
+.hours-8{
+    top:345px ;
+left: 45px;
+
+}
+.hours-9{
+    top:235px ;
+left: 10px;
+
+}
+.hours-10{
+    top:125px ;
+left: 45px;
+
+}
+.hours-11{
+    top:40px ;
+left: 130px;
+
+}
+.hours-12{
+    top:10px ;
+left: 245px;
+}
+.brand {
+  font-size: 20px;
+  font-weight: bold;
+  color: #8a1c00;
+  position: absolute;
+  top: 90px;
+  left: 42.5%;
+}
+
+.minute-hand-wrapper {
+  width: 400px;
+  height: 400px;
+  /* background-color: #2a2f5c; */
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  border-radius: 240px;
+}
+.minute-hand{
+    position: relative;
+}
+.minute-hand .hand {
+  width: 4px;
+  height: 200px;
+  background-color: #446940;
+  position: absolute;
+  left: 198px;
+}
+
+.minute-hand .arrow {
+  font-size: 30px;
+  font-weight: bold;
+  color: #404b69;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 191px;
+  top: -12px;
+}
+.hour-hand-wrapper {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  border-radius: 50%;
+}
+
+.hour-hand {
+  position: relative;
+}
+.hour-hand .hand {
+  width: 4px;
+  height: 150px;
+  background-color: #404b69;
+  position: absolute;
+  left: 148px;
+}
+
+.hour-hand .arrow {
+  font-size: 30px;
+  font-weight: bold;
+  color: #404b69;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 140px;
+  top: -7px;
+}
+.second-hand-wrapper {
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  border-radius: 50%;
+}
+
+.second-hand {
+  position: relative;
+}
+.second-hand .hand {
+  width: 2px;
+  height: 175px;
+  background-color: #404b69;
+  position: absolute;
+  left: 174px;
+}
+
+
+
+
+
 </style>
 
 <body>
   <nav>
     <div class="logo">
       <img src="./yiksi.png" width="58px" alt="">
-      <h1>yiksi</h1>
+      <h1>Yiksi</h1>
     </div>
 
     <ul id="menuList">
       <li>
-        <a href="#">calcul</a>
+        <a href="#to do list">to do list</a>
       </li>
       <li>
-        <a href="#">watch</a>
+        <a href="#calculator">calculator</a>
       </li>
       <li>
-        <a c href="cloc.html">clock</a>
+        <a href="# analog">analog</a>
       </li>
       <li>
-        <a href="">to do</a>
+        <a href="#clock">clock</a>
       </li>
+
     </ul>
     <div class="menu-icon" id="menuIcon" onclick="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </div>
   </nav>
   <!-- to do list -->
-  <div class="container">
+  <div class="container" id="to do list">
     <div class="card">
       <h1>To Do list</h1>
       <div class="input-container">
@@ -233,14 +576,89 @@
       <div id="tasks-container"></div>
     </div>
   </div>
-  <!-- html clock anolog -->
- 
+  <!-- calculator -->
+  <div class="containers" id="calculator">
+    <div class="calculator dark">
+      <div class="theme-toggler active">
+        <i class="toggler-icon"></i>
+      </div>
+      <div class="disply-screen">
+        <div id="display"></div>
+      </div>
+      <div class="buttons">
+        <table>
+          <tr>
+            <td><button class="btn-operator" id="clear">C</button></td>
+            <td><button class="btn-operator" id="/">&divide</button></td>
+            <td><button class="btn-operator" id="*">&times</button></td>
+            <td><button class="btn-operator" id="backspace">⌫</button></td>
+          </tr>
+          <tr>
+            <td><button class="btn-number" id="7">7</button></td>
+            <td><button class="btn-number" id="8">8</button></td>
+            <td><button class="btn-number" id="9">9</button></td>
+            <td><button class="btn-operator" id="-">-</button></td>
+          </tr>
+          <tr>
+            <td><button class="btn-number" id="4">4</button></td>
+            <td><button class="btn-number" id="5">5</button></td>
+            <td><button class="btn-number" id="6">6</button></td>
+            <td><button class="btn-operator" id="+">+</button></td>
+          </tr>
+          <tr>
+            <td><button class="btn-number" id="1">1</button></td>
+            <td><button class="btn-number" id="2">2</button></td>
+            <td><button class="btn-number" id="3">3</button></td>
+            <td rowspan="2"><button class="btn-equal" id="=">=</button></td>
+          </tr>
+          <tr>
+            <td><button class="btn-operator" id="(">(</button></td>
+            <td><button class="btn-number" id="0">0</button></td>
+            <td><button class="btn-operator" id=")">)</button></td>
+          </tr>
+        </table>
+      </div>`
+    </div>
+  </div>
+  <!-- analog -->
+     <div class="clock" id=" analog">
+        <div class="point"></div>
+        <div class="hour hours-1">1</div>
+        <div class=" hour hours-2">2</div>
+        <div class=" hour hours-3">3</div>
+        <div class="hour hours-4">4</div>
+        <div class=" hour hours-5">5</div>
+        <div class="hour hours-6">6</div>
+        <div class="hour hours-7">7</div>
+        <div class="hour hours-8">8</div>
+        <div class=" hour hours-9">9</div>
+        <div class="hour hours-10">10</div>
+        <div class=" hour hours-11">11</div>
+        <div class=" hour hours-12">12</div>
+        <div class="brand">AJANTA</div>
+        <div class="minute-hand-wrapper" id="minute-hand">
+            <div class="minute-hand">
+                <div class="hand"></div>
+                <div class="arrow">v</div>
+            </div>
+        </div>
+        <div class="hour-hand-wrapper" id="hour-hand">
+            <div class="hour-hand">
+                <div class="hand"></div>
+                <div class="arrow">V</div>
+            </div>
+        </div>
+        <div class="second-hand-wrapper" id="second-hand">
+            <div class="second-hand">
+                <div class="hand"></div>
+            </div>
+        </div>
+
+    </div>
   <script>
     let menuList = document.getElementById("menuList");
 
     menuList.style.maxHeight = "0px";
-
-
     function toggleMenu() {
       if (menuList.style.maxHeight == "0px") {
         menuList.style.maxHeight = "500px";
@@ -248,7 +666,6 @@
         menuList.style.maxHeight = "0px";
       }
     }
-
     const task = document.getElementById("task");
     const addTaskBtn = document.getElementById("add-task-btn");
     const taskContainer = document.getElementById("tasks-container");
@@ -269,11 +686,128 @@
       })
       task.value = ""
     });
-    // js clock anolog
 
 
 
- 
+    let display = document.getElementById("display");
+
+    let numbers = document.querySelectorAll(".btn-number");
+
+    let operators = document.querySelectorAll(".btn-operator");
+
+    let equal = document.querySelector(".btn-equal");
+
+    let clear = document.getElementById("clear");
+
+    let backspace = document.getElementById("backspace");
+
+    let themeToggler = document.querySelector(".theme-toggler");
+
+    let calculator = document.querySelector(".calculator");
+
+
+
+    numbers.forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        display.innerText += button.innerText;
+
+      });
+
+    });
+
+
+    // =========================
+    // OPERATORS
+    // =========================
+
+    operators.forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        let value = button.innerText;
+
+        // Ha gelin C iyo backspace operator ahaan
+        if (value !== "C" && value !== "⌫") {
+
+          if (value === "×") {
+            value = "*";
+          }
+
+          if (value === "÷") {
+            value = "/";
+          }
+
+          display.innerText += value;
+        }
+
+      });
+
+    });
+
+
+
+
+    equal.addEventListener("click", function () {
+
+      try {
+
+        display.innerText = eval(display.innerText);
+
+      } catch {
+
+        display.innerText = "Error";
+
+      }
+
+    });
+
+
+
+
+    clear.addEventListener("click", function () {
+
+      display.innerText = "";
+
+    });
+
+    backspace.addEventListener("click", function () {
+
+      display.innerText = display.innerText.slice(0, -1);
+
+    });
+
+
+
+    themeToggler.addEventListener("click", function () {
+
+      calculator.classList.toggle("dark");
+
+      themeToggler.classList.toggle("active");
+
+    });
+// Analog
+     var second = 0;
+var minute = 0;
+var hour = 0;
+var d = new Date();
+
+setInterval(
+  function() {
+    d = new Date();
+    second = d.getSeconds() * 6;
+    minute = d.getMinutes() * 6;
+    hour = d.getHours() * 30;
+    document.getElementById( "second-hand").style.transform= "rotate(" + second + "deg)";
+    document.getElementById("minute-hand").style.transform= "rotate(" + minute + "deg)";
+    document.getElementById("hour-hand").style.transform= "rotate(" + hour + "deg)";
+  }, 1000
+);
+
+
+
+
 
   </script>
 
