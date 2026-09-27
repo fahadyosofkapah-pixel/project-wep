@@ -18,9 +18,12 @@
 
   body {
     height: 100%;
-    width: 100%;
-    background-color: red;
-  }
+   width: 100%;
+
+  
+    background-image: linear-gradient(to bottom right, rgba(79,51,176,1),rgba(210,53,165));
+}   
+  
 
   nav {
     padding: 10px 30px;
@@ -31,9 +34,9 @@
     position: fixed;
     width: 100%;
     height: 70px;
-      z-index: 1000;
-}
-  
+    z-index: 1000;
+  }
+
 
   .logo {
     color: #fff;
@@ -214,16 +217,14 @@
     text-decoration: none;
     color: #fff;
   }
-
-  /* body{
-    background-image: linear-gradient(to bottom right, rgba(79,51,176,1),rgba(210,53,165));
-} */
   .containers {
     height: 100vh;
     width: 100%;
     display: grid;
     place-items: center;
-      scroll-margin-top: 80px;
+    scroll-margin-top: 80px;
+    margin-bottom: 20px;
+
   }
 
   .calculator {
@@ -233,7 +234,7 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 30px #000;
-    /* scroll-margin-top: 80px; */
+    scroll-margin-bottom: 80px;
   }
 
   .theme-toggler {
@@ -276,6 +277,7 @@
     font-size: 30px;
     margin-bottom: 20px;
     overflow-x: scroll;
+
   }
 
   #display::-webkit-scrollbar {
@@ -370,6 +372,7 @@
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
+    margin-top: 20px;
 }
 .point{
     width: 20px;
@@ -387,49 +390,49 @@
     position: absolute;
 }
 .hours-1{
-    top:40px ;
-    right: 130px;
+    top:70px ;
+    right: 100px;
 
 }
 
 .hours-2{
-    top:135px ;
-    right: 45px;
+    top:145px ;
+    right: 35px;
 
 }
 .hours-3{
-    top:235px ;
-    right: 10px;
+    top:240px ;
+    right: 25px;
 
 }
 .hours-4{
-    top:345px ;
-    right: 45px;
+    top:335px ;
+    right: 55px;
 
 }
 .hours-5{
-    top:430px ;
-    right: 130px;
+    top:390px ;
+    right: 110px;
 
 }
 .hours-6{
     bottom:10px ;
-    left: 240px;
+    left: 235px;
 
 }
 .hours-7{
-    top:430px ;
+    top:400px ;
     left: 130px;
 
 }
 .hours-8{
-    top:345px ;
-left: 45px;
+    top:335px ;
+left: 55px;
 
 }
 .hours-9{
     top:235px ;
-left: 10px;
+left: 20px;
 
 }
 .hours-10{
@@ -439,12 +442,12 @@ left: 45px;
 }
 .hours-11{
     top:40px ;
-left: 130px;
+left: 125px;
 
 }
 .hours-12{
     top:10px ;
-left: 245px;
+left: 230px;
 }
 .brand {
   font-size: 20px;
@@ -533,39 +536,6 @@ left: 245px;
   left: 174px;
 }
 
-
-/* clock */
- *{
-    margin: 0;
-    padding: 0;
- }
- .section{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font: 12px arial, Helvetice, sans-serif;
-    background-color: aqua;
- }
- .watch{
-    border: 1px solid #606060;
-    color: white;
-    padding: 40px;
-    border-radius: 10px;
-     background-color: #22222222;
-}
-
-#date{
-    font-size: 20px !important;
-    text-align: center;
-}
-.watch ul{
-    list-style: none;
-    display: flex;
-    font-size: 90px;
-    gap: 15px; 
-}
-
 </style>
 
 <body>
@@ -646,7 +616,7 @@ left: 245px;
             <td><button class="btn-operator" id=")">)</button></td>
           </tr>
         </table>
-      </div>`
+      </div>
     </div>
   </div>
   <!-- analog -->
@@ -729,104 +699,49 @@ left: 245px;
       })
       task.value = ""
     });
-
-
-
     let display = document.getElementById("display");
-
     let numbers = document.querySelectorAll(".btn-number");
-
     let operators = document.querySelectorAll(".btn-operator");
-
     let equal = document.querySelector(".btn-equal");
-
     let clear = document.getElementById("clear");
-
     let backspace = document.getElementById("backspace");
-
     let themeToggler = document.querySelector(".theme-toggler");
-
     let calculator = document.querySelector(".calculator");
-
-
-
     numbers.forEach(function (button) {
-
       button.addEventListener("click", function () {
-
         display.innerText += button.innerText;
-
       });
-
     });
-
-
-    // =========================
-    // OPERATORS
-    // =========================
-
     operators.forEach(function (button) {
-
       button.addEventListener("click", function () {
-
         let value = button.innerText;
-
-        // Ha gelin C iyo backspace operator ahaan
         if (value !== "C" && value !== "⌫") {
-
           if (value === "×") {
             value = "*";
           }
-
           if (value === "÷") {
             value = "/";
           }
-
           display.innerText += value;
         }
-
       });
 
     });
-
-
-
-
     equal.addEventListener("click", function () {
-
       try {
-
         display.innerText = eval(display.innerText);
-
       } catch {
-
         display.innerText = "Error";
-
       }
-
     });
-
-
-
-
     clear.addEventListener("click", function () {
-
       display.innerText = "";
-
     });
-
     backspace.addEventListener("click", function () {
-
       display.innerText = display.innerText.slice(0, -1);
-
     });
-
-
-
     themeToggler.addEventListener("click", function () {
-
       calculator.classList.toggle("dark");
-
       themeToggler.classList.toggle("active");
 
     });
@@ -847,42 +762,7 @@ setInterval(
     document.getElementById("hour-hand").style.transform= "rotate(" + hour + "deg)";
   }, 1000
 );
-
-
-// clock
- function clock() {
-            var monthNames = ["January", "February", "March", "April",
-                "May", "June", "July", "August",
-                "September", "October", "November", "December"];
-            var dayNames = ["sunday", "monday", "Tuesday", "wednesday",
-                "Thursday", "friday", "saturday",]
-
-            var today = new Date();
-
-            document.getElementById('date').innerHTML =
-                dayNames[today.getDay()] + ' ' +
-                today.getDate() + ' ' +
-                monthNames[today.getMonth()] + ' ' +
-                today.getFullYear();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-
-            var day = h < 11 ? 'AM' : 'PM';
-
-            h = h < 10 ? '0' + h : h;
-            m = m < 10 ? '0' + m : m;
-            s = s < 10 ? '0' + s : s;
-
-            document.getElementById('hours').innerHTML = h;
-            document.getElementById('min').innerHTML = m;
-            document.getElementById('sec').innerHTML = s;
-            clock();
-        } var inter = setInterval(clock, 400);
-
-
   </script>
-
 </body>
 
 </html>
